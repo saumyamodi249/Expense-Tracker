@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "antd": "^6.7.1",
+    "motion": "^14.14.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "zustand": "^5.1.0"
