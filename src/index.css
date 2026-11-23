@@ -24,6 +24,14 @@
     height: 100%;
   }
 
+  .ant-layout {
+    min-height: 100vh !important;
+  }
+
+  .ant-layout-sider {
+    min-height: 100vh !important;
+  }
+
   html::-webkit-scrollbar,
   body::-webkit-scrollbar,
   *::-webkit-scrollbar {
@@ -136,6 +144,50 @@ button:disabled {
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Ant Design Modal Theme Integration */
+.ant-modal .ant-modal-content,
+.ant-modal .ant-modal-container {
+  background-color: var(--theme-color-modal-bg) !important;
+  color: var(--theme-color-font) !important;
+  border: 1px solid var(--theme-color-border) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4) !important;
+}
+
+.ant-modal .ant-modal-header {
+  background-color: transparent !important;
+  color: var(--theme-color-font) !important;
+}
+
+.ant-modal .ant-modal-title {
+  color: var(--theme-color-font) !important;
+}
+
+.ant-modal .ant-modal-close {
+  color: var(--theme-color-font-secondary) !important;
+}
+
+.ant-modal .ant-modal-close:hover {
+  color: var(--theme-color-font) !important;
+  background-color: var(--theme-color-background-tertiary) !important;
+}
+
+.ant-modal .ant-form-item-label > label {
+  color: var(--theme-color-font-secondary) !important;
+}
+
+.ant-modal .ant-input,
+.ant-modal .ant-input-number,
+.ant-modal .ant-input-number-input {
+  background-color: var(--theme-color-modal-input) !important;
+  color: var(--theme-color-font) !important;
+  border-color: var(--theme-color-border) !important;
+}
+
+.ant-modal .ant-divider {
+  border-color: var(--theme-color-border) !important;
 }
 
 /* Ant Design Search Input */
