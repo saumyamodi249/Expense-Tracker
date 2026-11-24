@@ -50,33 +50,34 @@
 :root {
   color-scheme: light;
 
-  /* Primary */
-  --theme-color-primary: #0f7d34;
-  --theme-color-primary-hover: #15803d;
+  /* Primary (Lumen Terracotta Orange) */
+  --theme-color-primary: #D9653B;
+  --theme-color-primary-hover: #c4562e;
   --theme-color-on-brand: #ffffff;
-  --theme-color-accent: light-dark(#15803d, #16a34a);
+  --theme-color-accent: light-dark(#D9653B, #E47742);
 
   /* Font */
-  --theme-color-font: light-dark(#111827, #ffffff);
-  --theme-color-font-secondary: light-dark(#4b5563, #9ca3af);
-  --theme-color-font-tertiary: light-dark(#9ca3af, #6b7280);
+  --theme-color-font: light-dark(#2A2521, #ffffff);
+  --theme-color-font-secondary: light-dark(#7C746C, #9ca3af);
+  --theme-color-font-tertiary: light-dark(#ABA49C, #6b7280);
 
-  /* Background */
-  --theme-color-background: light-dark(#ffffff, #131714);
-  --theme-color-background-secondary: light-dark(#f4f6f4, #181b19);
-  --theme-color-background-tertiary: light-dark(#e9eee9, #101311);
+  /* Background (Warm Cream in Light Mode) */
+  --theme-color-background: light-dark(#FAF7F2, #131714);
+  --theme-color-background-secondary: light-dark(#F4EFEA, #181b19);
+  --theme-color-background-tertiary: light-dark(#ECE6DD, #101311);
+  --theme-color-sidebar: light-dark(#ffffff, #181b19);
 
   /* Border */
-  --theme-color-border: light-dark(#e5e7eb, #262c28);
-  --theme-color-border-secondary: light-dark(#f0f2f0, #1d221f);
+  --theme-color-border: light-dark(#ECE6DD, #262c28);
+  --theme-color-border-secondary: light-dark(#F4EFEA, #1d221f);
 
-  /* Modal */
+  /* Modal & Card */
   --theme-color-modal-bg: light-dark(#ffffff, #181b19);
-  --theme-color-modal-input: light-dark(#f9fafb, #101311);
-  --theme-color-modal-input-border: light-dark(#0f7d34, #16a34a);
+  --theme-color-modal-input: light-dark(#FAF7F2, #101311);
+  --theme-color-modal-input-border: light-dark(#D9653B, #E47742);
 
   /* Status */
-  --theme-color-success: light-dark(#16a34a, #22c55e);
+  --theme-color-success: light-dark(#3B7E58, #22c55e);
   --theme-color-warning: #f59e0b;
   --theme-color-error: light-dark(#dc2626, #ef4444);
 
@@ -108,6 +109,7 @@
   --color-background: var(--theme-color-background);
   --color-background-secondary: var(--theme-color-background-secondary);
   --color-background-tertiary: var(--theme-color-background-tertiary);
+  --color-sidebar: var(--theme-color-sidebar);
 
   --color-border: var(--theme-color-border);
   --color-border-secondary: var(--theme-color-border-secondary);
@@ -201,6 +203,128 @@ button:disabled {
   outline: none !important;
 }
 
+/* Avatar Theme */
+.theme-avatar {
+  background-color: var(--theme-color-primary) !important;
+  color: var(--theme-color-on-brand) !important;
+  font-weight: 700 !important;
+  border: none !important;
+  vertical-align: middle !important;
+}
+
+/* Notification Badge */
+.notification-badge .ant-badge-dot {
+  background-color: var(--theme-color-primary) !important;
+}
+
+/* Danger Soft Button */
+.btn-danger-soft {
+  background-color: rgba(220, 38, 38, 0.1) !important;
+  color: var(--theme-color-error) !important;
+  border: 1px solid rgba(220, 38, 38, 0.2) !important;
+}
+.btn-danger-soft:hover {
+  background-color: rgba(220, 38, 38, 0.18) !important;
+}
+
+/* Drawer Theme Integration */
+.theme-drawer .ant-drawer-body {
+  padding: 20px 24px !important;
+  background-color: var(--theme-color-modal-bg) !important;
+  color: var(--theme-color-font) !important;
+}
+
+/* Budget Progress Bar */
+.budget-progress .ant-progress-inner {
+  background-color: var(--theme-color-background-secondary) !important;
+}
+.budget-progress .ant-progress-bg {
+  background-color: var(--theme-color-primary) !important;
+}
+
+/* Accent Palette Swatches */
+.swatch-orange { background-color: #E47742 !important; }
+.swatch-blue { background-color: #647FCE !important; }
+.swatch-green { background-color: #0f7d34 !important; }
+.swatch-purple { background-color: #9875C5 !important; }
+.swatch-rose { background-color: #D45D70 !important; }
+.swatch-charcoal { background-color: #444444 !important; }
+
+/* Category Palette Variables */
+:root {
+  --cat-terracotta: #d96b27;
+  --cat-rust: #c0564b;
+  --cat-amber: #e09f3e;
+  --cat-forest: #4a8b5c;
+  --cat-brown: #7a5230;
+  --cat-cobalt: #4a72e0;
+  --cat-violet: #8a4ae0;
+  --cat-rose: #d45b65;
+}
+
+/* Category Badges */
+.cat-badge-terracotta { background-color: rgba(217, 107, 39, 0.12) !important; color: var(--cat-terracotta) !important; }
+.cat-badge-rust { background-color: rgba(192, 86, 75, 0.12) !important; color: var(--cat-rust) !important; }
+.cat-badge-amber { background-color: rgba(224, 159, 62, 0.12) !important; color: var(--cat-amber) !important; }
+.cat-badge-forest { background-color: rgba(74, 139, 92, 0.12) !important; color: var(--cat-forest) !important; }
+.cat-badge-brown { background-color: rgba(122, 82, 48, 0.12) !important; color: var(--cat-brown) !important; }
+.cat-badge-cobalt { background-color: rgba(74, 114, 224, 0.12) !important; color: var(--cat-cobalt) !important; }
+.cat-badge-violet { background-color: rgba(138, 74, 224, 0.12) !important; color: var(--cat-violet) !important; }
+.cat-badge-rose { background-color: rgba(212, 91, 101, 0.12) !important; color: var(--cat-rose) !important; }
+
+/* Category Dots */
+.cat-dot-terracotta { background-color: var(--cat-terracotta) !important; }
+.cat-dot-rust { background-color: var(--cat-rust) !important; }
+.cat-dot-amber { background-color: var(--cat-amber) !important; }
+.cat-dot-forest { background-color: var(--cat-forest) !important; }
+.cat-dot-brown { background-color: var(--cat-brown) !important; }
+.cat-dot-cobalt { background-color: var(--cat-cobalt) !important; }
+.cat-dot-violet { background-color: var(--cat-violet) !important; }
+.cat-dot-rose { background-color: var(--cat-rose) !important; }
+
+/* Category Text */
+.cat-text-terracotta { color: var(--cat-terracotta) !important; }
+.cat-text-rust { color: var(--cat-rust) !important; }
+.cat-text-amber { color: var(--cat-amber) !important; }
+.cat-text-forest { color: var(--cat-forest) !important; }
+.cat-text-brown { color: var(--cat-brown) !important; }
+.cat-text-cobalt { color: var(--cat-cobalt) !important; }
+.cat-text-violet { color: var(--cat-violet) !important; }
+.cat-text-rose { color: var(--cat-rose) !important; }
+
+/* Category Progress Bars */
+.cat-progress .ant-progress-inner {
+  background-color: var(--theme-color-background-secondary) !important;
+}
+.cat-progress-terracotta .ant-progress-bg { background-color: var(--cat-terracotta) !important; }
+.cat-progress-rust .ant-progress-bg { background-color: var(--cat-rust) !important; }
+.cat-progress-amber .ant-progress-bg { background-color: var(--cat-amber) !important; }
+.cat-progress-forest .ant-progress-bg { background-color: var(--cat-forest) !important; }
+.cat-progress-brown .ant-progress-bg { background-color: var(--cat-brown) !important; }
+.cat-progress-cobalt .ant-progress-bg { background-color: var(--cat-cobalt) !important; }
+.cat-progress-violet .ant-progress-bg { background-color: var(--cat-violet) !important; }
+.cat-progress-rose .ant-progress-bg { background-color: var(--cat-rose) !important; }
+.cat-progress-over .ant-progress-bg { background-color: var(--theme-color-error) !important; }
+
+/* Category Color Swatches */
+.cat-swatch-terracotta { background-color: var(--cat-terracotta) !important; }
+.cat-swatch-rust { background-color: var(--cat-rust) !important; }
+.cat-swatch-amber { background-color: var(--cat-amber) !important; }
+.cat-swatch-forest { background-color: var(--cat-forest) !important; }
+.cat-swatch-brown { background-color: var(--cat-brown) !important; }
+.cat-swatch-cobalt { background-color: var(--cat-cobalt) !important; }
+.cat-swatch-violet { background-color: var(--cat-violet) !important; }
+.cat-swatch-rose { background-color: var(--cat-rose) !important; }
+
+.cat-swatch-selected-terracotta { box-shadow: 0 0 0 2.5px var(--theme-color-modal-bg), 0 0 0 4.5px var(--cat-terracotta) !important; }
+.cat-swatch-selected-rust { box-shadow: 0 0 0 2.5px var(--theme-color-modal-bg), 0 0 0 4.5px var(--cat-rust) !important; }
+.cat-swatch-selected-amber { box-shadow: 0 0 0 2.5px var(--theme-color-modal-bg), 0 0 0 4.5px var(--cat-amber) !important; }
+.cat-swatch-selected-forest { box-shadow: 0 0 0 2.5px var(--theme-color-modal-bg), 0 0 0 4.5px var(--cat-forest) !important; }
+.cat-swatch-selected-brown { box-shadow: 0 0 0 2.5px var(--theme-color-modal-bg), 0 0 0 4.5px var(--cat-brown) !important; }
+.cat-swatch-selected-cobalt { box-shadow: 0 0 0 2.5px var(--theme-color-modal-bg), 0 0 0 4.5px var(--cat-cobalt) !important; }
+.cat-swatch-selected-violet { box-shadow: 0 0 0 2.5px var(--theme-color-modal-bg), 0 0 0 4.5px var(--cat-violet) !important; }
+.cat-swatch-selected-rose { box-shadow: 0 0 0 2.5px var(--theme-color-modal-bg), 0 0 0 4.5px var(--cat-rose) !important; }
+
 /* Ant Design Message Input */
 .chat-message-input,
 .chat-message-input:focus,
@@ -219,3 +343,21 @@ button:disabled {
   box-shadow: none !important;
   outline: none !important;
 }
+
+/* Category Modal Tabs */
+.category-modal-tabs .ant-tabs-nav {
+  margin-bottom: 0.75rem !important;
+}
+
+.category-modal-tabs .ant-tabs-tab {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  padding: 8px 20px !important;
+}
+
+.category-modal-tabs .ant-tabs-tab-btn {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+}
+
+
