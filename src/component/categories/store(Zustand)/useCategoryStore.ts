@@ -47,10 +47,8 @@ export const useCategoryStore = create<CategoryState>()(
             {
               id: `${dto.isDefault ? 'default' : 'custom'}-${Date.now()}`,
               name: dto.name.trim(),
-              type: 'expense',
               budget: Number(dto.budget) || 0,
               spent: Number(dto.initialSpent) || 0,
-              initialSpent: Number(dto.initialSpent) || 0,
               color: dto.color,
               icon: dto.icon,
               isDefault: Boolean(dto.isDefault),
@@ -81,7 +79,6 @@ export const useCategoryStore = create<CategoryState>()(
           id: `tx-${Date.now()}`,
           categoryId: dto.categoryId,
           amount,
-          type: 'expense',
           note: dto.note.trim() || 'Expense',
           date: new Date().toLocaleDateString('en-US', {
             month: 'short',

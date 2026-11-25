@@ -33,7 +33,7 @@ export const EditBudgetForm: React.FC<EditBudgetFormProps> = ({
     <div className="p-3.5 rounded-2xl bg-modal-input border border-border flex flex-col gap-2.5">
       <div className="flex items-center justify-between">
         <div className="text-xs font-semibold text-font">
-          Edit Monthly {category.type === 'expense' ? 'Budget Limit' : 'Income Goal'}
+          Edit Monthly Budget Limit
         </div>
       </div>
 

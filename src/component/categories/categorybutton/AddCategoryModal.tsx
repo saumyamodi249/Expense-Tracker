@@ -58,7 +58,6 @@ export const AddCategoryModal: React.FC = () => {
 
     addCategory({
       name: name.trim(),
-      type: 'expense',
       budget: budgetCheck.amount,
       initialSpent: initialSpentVal,
       color,

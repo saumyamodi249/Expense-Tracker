@@ -9,7 +9,6 @@ interface QuickTransactionFormProps {
   onLogTransaction: (dto: {
     categoryId: string;
     amount: number;
-    type: 'expense';
     note: string;
   }) => void;
 }
@@ -33,7 +32,6 @@ export const QuickTransactionForm: React.FC<QuickTransactionFormProps> = ({
     onLogTransaction({
       categoryId: category.id,
       amount: check.amount,
-      type: 'expense',
       note: note.trim() || 'Expense entry',
     });
 
