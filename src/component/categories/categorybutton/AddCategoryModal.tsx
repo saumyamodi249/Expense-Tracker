@@ -1,6 +1,6 @@
 // src/features/categories/components/modals/AddCategoryModal.tsx
 import React, { useState } from 'react';
-import { Modal, Button, Input, Tabs, message } from 'antd';
+import { Modal, Button, Input, Tabs, message, Divider } from 'antd';
 import { RxCross2 } from 'react-icons/rx';
 import { useCategoryStore } from '../store(Zustand)/useCategoryStore';
 import { IconPickerGrid } from './IconPickerGrid';
@@ -86,7 +86,7 @@ export const AddCategoryModal: React.FC = () => {
     >
       <div className="flex flex-col gap-4 py-1">
         {/* Header */}
-        <div className="flex items-center justify-between pb-2 border-b border-border">
+        <div className="flex items-center justify-between">
           <h2 className="text-base font-bold text-font m-0">Add New Category</h2>
           <Button
             type="text"
@@ -96,6 +96,8 @@ export const AddCategoryModal: React.FC = () => {
             className="!text-font-tertiary hover:!text-font hover:!bg-background-secondary !border-none"
           />
         </div>
+
+        <Divider className="!my-2 !border-border" />
 
         {/* Ant Design Tabs centered */}
         <Tabs
@@ -161,7 +163,9 @@ export const AddCategoryModal: React.FC = () => {
           />
 
 
-          <div className="flex items-center justify-end gap-3 pt-4 border-t border-border mt-1">
+          <Divider className="!my-4 !border-border" />
+
+          <div className="flex items-center justify-end gap-3">
             <Button
               type="text"
               onClick={handleClose}

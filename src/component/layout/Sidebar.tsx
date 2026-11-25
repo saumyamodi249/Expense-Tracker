@@ -1,6 +1,6 @@
 // src/component/layout/Sidebar.tsx
 import React from 'react';
-import { Layout, Button } from 'antd';
+import { Layout, Button, Divider } from 'antd';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { BiCategoryAlt } from 'react-icons/bi';
 import { CgProfile } from 'react-icons/cg';
@@ -111,10 +111,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </nav>
         </div>
 
-        <div className="flex flex-col gap-3">
-          <div className="pt-2 border-t border-border">
-            <Logout />
-          </div>
+        <div className="flex flex-col gap-2">
+          <Divider className="!my-2 !border-border" />
+          <Logout />
         </div>
       </div>
     </Sider>

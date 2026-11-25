@@ -1,6 +1,6 @@
 // src/component/layout/Header.tsx
 import React, { useState } from 'react';
-import { Avatar, Badge, Button, Input, Popover, Space, Tooltip } from 'antd';
+import { Avatar, Badge, Button, Input, Popover, Space, Tooltip, Divider } from 'antd';
 import { FiBell, FiCheck, FiSearch } from 'react-icons/fi';
 import { useUser } from '@clerk/react';
 import { useNavigate } from 'react-router-dom';
@@ -39,7 +39,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, onNavigate }) => {
 
   const notificationContent = (
     <div className="w-64 p-1">
-      <div className="flex items-center justify-between pb-2 mb-2 border-b border-border">
+      <div className="flex items-center justify-between">
         <div className="text-xs font-semibold text-font">Notifications</div>
         {hasUnread && (
           <Button
@@ -53,6 +53,8 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, onNavigate }) => {
           </Button>
         )}
       </div>
+
+      <Divider className="!my-2 !border-border" />
       <div className="flex flex-col gap-2">
         <div className="p-2 rounded-xl bg-background-secondary text-xs">
           <p className="font-medium text-font m-0">Welcome to Expense Tracker!</p>

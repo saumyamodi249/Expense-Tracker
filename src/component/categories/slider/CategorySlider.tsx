@@ -1,6 +1,6 @@
 // src/features/categories/components/drawer/CategoryDetailDrawer.tsx
 import React, { useState } from 'react';
-import { Drawer, Popconfirm, Button } from 'antd';
+import { Drawer, Popconfirm, Button, Divider } from 'antd';
 import { RxCross2 } from 'react-icons/rx';
 import { FiTrash2 } from 'react-icons/fi';
 import { useCategoryDrawer } from '../hooks/useCategorySlider';
@@ -42,7 +42,7 @@ export const CategoryDetailDrawer: React.FC = () => {
         {/* Top Content Area */}
         <div className="flex flex-col gap-6 overflow-y-auto pr-0.5">
           {/* Header matching Screenshot 4 */}
-          <div className="flex items-center justify-between pb-3 border-b border-border">
+          <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div
                 className={`w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 shadow-2xs cat-badge-${colorKey}`}
@@ -69,6 +69,8 @@ export const CategoryDetailDrawer: React.FC = () => {
             />
           </div>
 
+          <Divider className="!my-1 !border-border" />
+
           {/* Big Figure Summary Banner */}
           <DrawerSummaryBanner category={activeCategory} />
 
@@ -93,8 +95,10 @@ export const CategoryDetailDrawer: React.FC = () => {
           />
         </div>
 
+        <Divider className="!my-3 !border-border" />
+
         {/* Footer matching Screenshot 4: Delete Category on left, Edit Budget Limit on right */}
-        <div className="flex items-center justify-between pt-4 border-t border-border">
+        <div className="flex items-center justify-between">
           <Popconfirm
             title="Delete this category?"
             description="All category metrics will be permanently removed."
