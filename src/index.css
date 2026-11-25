@@ -50,18 +50,18 @@
 :root {
   color-scheme: light;
 
-  /* Primary (Lumen Terracotta Orange) */
-  --theme-color-primary: #D9653B;
-  --theme-color-primary-hover: #c4562e;
+  /* Primary Accent (Default Charcoal) */
+  --theme-color-primary: light-dark(#2d3139, #525a68);
+  --theme-color-primary-hover: light-dark(#1e2228, #636c7c);
   --theme-color-on-brand: #ffffff;
-  --theme-color-accent: light-dark(#D9653B, #E47742);
+  --theme-color-accent: light-dark(#2d3139, #525a68);
 
   /* Font */
   --theme-color-font: light-dark(#2A2521, #ffffff);
   --theme-color-font-secondary: light-dark(#7C746C, #9ca3af);
   --theme-color-font-tertiary: light-dark(#ABA49C, #6b7280);
 
-  /* Background (Warm Cream in Light Mode) */
+  /* Background */
   --theme-color-background: light-dark(#FAF7F2, #131714);
   --theme-color-background-secondary: light-dark(#F4EFEA, #181b19);
   --theme-color-background-tertiary: light-dark(#ECE6DD, #101311);
@@ -74,7 +74,7 @@
   /* Modal & Card */
   --theme-color-modal-bg: light-dark(#ffffff, #181b19);
   --theme-color-modal-input: light-dark(#FAF7F2, #101311);
-  --theme-color-modal-input-border: light-dark(#D9653B, #E47742);
+  --theme-color-modal-input-border: light-dark(#2d3139, #525a68);
 
   /* Status */
   --theme-color-success: light-dark(#3B7E58, #22c55e);
@@ -217,16 +217,6 @@ button:disabled {
   background-color: var(--theme-color-primary) !important;
 }
 
-/* Danger Soft Button */
-.btn-danger-soft {
-  background-color: rgba(220, 38, 38, 0.1) !important;
-  color: var(--theme-color-error) !important;
-  border: 1px solid rgba(220, 38, 38, 0.2) !important;
-}
-.btn-danger-soft:hover {
-  background-color: rgba(220, 38, 38, 0.18) !important;
-}
-
 /* Drawer Theme Integration */
 .theme-drawer .ant-drawer-body {
   padding: 20px 24px !important;
@@ -242,106 +232,43 @@ button:disabled {
   background-color: var(--theme-color-primary) !important;
 }
 
-/* Accent Palette Swatches */
-.swatch-orange { background-color: #E47742 !important; }
-.swatch-blue { background-color: #647FCE !important; }
-.swatch-green { background-color: #0f7d34 !important; }
-.swatch-purple { background-color: #9875C5 !important; }
-.swatch-rose { background-color: #D45D70 !important; }
-.swatch-charcoal { background-color: #444444 !important; }
+/* Dynamic Accent Variables */
+:root[data-accent="charcoal"], :root { --theme-color-primary: light-dark(#2d3139, #525a68); --theme-color-primary-hover: light-dark(#1e2228, #636c7c); }
+:root[data-accent="blue"]     { --theme-color-primary: light-dark(#3b6fd8, #647FCE); --theme-color-primary-hover: light-dark(#2e5dc2, #5069b5); }
+:root[data-accent="indigo"]   { --theme-color-primary: light-dark(#4f46e5, #7c77f7); --theme-color-primary-hover: light-dark(#4338ca, #6863ed); }
+:root[data-accent="purple"]   { --theme-color-primary: light-dark(#794fbd, #9875C5); --theme-color-primary-hover: light-dark(#693fa8, #835eb0); }
+:root[data-accent="rose"]     { --theme-color-primary: light-dark(#c44059, #D45D70); --theme-color-primary-hover: light-dark(#ac344b, #be485b); }
+:root[data-accent="crimson"]  { --theme-color-primary: light-dark(#b91c1c, #f87171); --theme-color-primary-hover: light-dark(#991b1b, #ef4444); }
+:root[data-accent="orange"]   { --theme-color-primary: light-dark(#c85628, #E47742); --theme-color-primary-hover: light-dark(#b34a1f, #d26733); }
+:root[data-accent="amber"]    { --theme-color-primary: light-dark(#b45309, #f59e0b); --theme-color-primary-hover: light-dark(#92400e, #d97706); }
+:root[data-accent="teal"]     { --theme-color-primary: light-dark(#0f766e, #14b8a6); --theme-color-primary-hover: light-dark(#115e59, #0d9488); }
+:root[data-accent="green"]    { --theme-color-primary: light-dark(#15803d, #22c55e); --theme-color-primary-hover: light-dark(#166534, #16a34a); }
 
-/* Category Palette Variables */
-:root {
-  --cat-terracotta: #d96b27;
-  --cat-rust: #c0564b;
-  --cat-amber: #e09f3e;
-  --cat-forest: #4a8b5c;
-  --cat-brown: #7a5230;
-  --cat-cobalt: #4a72e0;
-  --cat-violet: #8a4ae0;
-  --cat-rose: #d45b65;
+/* Unified Color Palette (Single source of truth per color) */
+.swatch-charcoal, .cat-badge-charcoal, .cat-dot-charcoal, .cat-text-charcoal, .cat-swatch-charcoal, .cat-badge-brown, .cat-dot-brown, .cat-text-brown, .cat-swatch-brown { color: light-dark(#2d3139, #525a68) !important; }
+.swatch-blue,     .cat-badge-blue,     .cat-dot-blue,     .cat-text-blue,     .cat-swatch-blue,     .cat-badge-cobalt, .cat-dot-cobalt, .cat-text-cobalt, .cat-swatch-cobalt { color: light-dark(#3b6fd8, #647FCE) !important; }
+.swatch-indigo,   .cat-badge-indigo,   .cat-dot-indigo,   .cat-text-indigo,   .cat-swatch-indigo   { color: light-dark(#4f46e5, #7c77f7) !important; }
+.swatch-purple,   .cat-badge-purple,   .cat-dot-purple,   .cat-text-purple,   .cat-swatch-purple,   .cat-badge-violet, .cat-dot-violet, .cat-text-violet, .cat-swatch-violet { color: light-dark(#794fbd, #9875C5) !important; }
+.swatch-rose,     .cat-badge-rose,     .cat-dot-rose,     .cat-text-rose,     .cat-swatch-rose     { color: light-dark(#c44059, #D45D70) !important; }
+.swatch-crimson,  .cat-badge-crimson,  .cat-dot-crimson,  .cat-text-crimson,  .cat-swatch-crimson,  .cat-badge-rust,   .cat-dot-rust,   .cat-text-rust,   .cat-swatch-rust   { color: light-dark(#b91c1c, #f87171) !important; }
+.swatch-orange,   .cat-badge-orange,   .cat-dot-orange,   .cat-text-orange,   .cat-swatch-orange,   .cat-badge-terracotta, .cat-dot-terracotta, .cat-text-terracotta, .cat-swatch-terracotta { color: light-dark(#c85628, #E47742) !important; }
+.swatch-amber,    .cat-badge-amber,    .cat-dot-amber,    .cat-text-amber,    .cat-swatch-amber    { color: light-dark(#b45309, #f59e0b) !important; }
+.swatch-teal,     .cat-badge-teal,     .cat-dot-teal,     .cat-text-teal,     .cat-swatch-teal     { color: light-dark(#0f766e, #14b8a6) !important; }
+.swatch-green,    .cat-badge-green,    .cat-dot-green,    .cat-text-green,    .cat-swatch-green,    .cat-badge-forest, .cat-dot-forest, .cat-text-forest, .cat-swatch-forest { color: light-dark(#15803d, #22c55e) !important; }
+
+/* Swatches & Dots background */
+[class*="swatch-"], [class*="cat-dot-"] {
+  background-color: currentColor !important;
 }
 
-/* Category Badges */
-.cat-badge-terracotta { background-color: rgba(217, 107, 39, 0.12) !important; color: var(--cat-terracotta) !important; }
-.cat-badge-rust { background-color: rgba(192, 86, 75, 0.12) !important; color: var(--cat-rust) !important; }
-.cat-badge-amber { background-color: rgba(224, 159, 62, 0.12) !important; color: var(--cat-amber) !important; }
-.cat-badge-forest { background-color: rgba(74, 139, 92, 0.12) !important; color: var(--cat-forest) !important; }
-.cat-badge-brown { background-color: rgba(122, 82, 48, 0.12) !important; color: var(--cat-brown) !important; }
-.cat-badge-cobalt { background-color: rgba(74, 114, 224, 0.12) !important; color: var(--cat-cobalt) !important; }
-.cat-badge-violet { background-color: rgba(138, 74, 224, 0.12) !important; color: var(--cat-violet) !important; }
-.cat-badge-rose { background-color: rgba(212, 91, 101, 0.12) !important; color: var(--cat-rose) !important; }
-
-/* Category Dots */
-.cat-dot-terracotta { background-color: var(--cat-terracotta) !important; }
-.cat-dot-rust { background-color: var(--cat-rust) !important; }
-.cat-dot-amber { background-color: var(--cat-amber) !important; }
-.cat-dot-forest { background-color: var(--cat-forest) !important; }
-.cat-dot-brown { background-color: var(--cat-brown) !important; }
-.cat-dot-cobalt { background-color: var(--cat-cobalt) !important; }
-.cat-dot-violet { background-color: var(--cat-violet) !important; }
-.cat-dot-rose { background-color: var(--cat-rose) !important; }
-
-/* Category Text */
-.cat-text-terracotta { color: var(--cat-terracotta) !important; }
-.cat-text-rust { color: var(--cat-rust) !important; }
-.cat-text-amber { color: var(--cat-amber) !important; }
-.cat-text-forest { color: var(--cat-forest) !important; }
-.cat-text-brown { color: var(--cat-brown) !important; }
-.cat-text-cobalt { color: var(--cat-cobalt) !important; }
-.cat-text-violet { color: var(--cat-violet) !important; }
-.cat-text-rose { color: var(--cat-rose) !important; }
-
-/* Category Progress Bars */
-.cat-progress .ant-progress-inner {
-  background-color: var(--theme-color-background-secondary) !important;
+/* Category Badges tinted background */
+[class*="cat-badge-"] {
+  background-color: color-mix(in srgb, currentColor 14%, transparent) !important;
 }
-.cat-progress-terracotta .ant-progress-bg { background-color: var(--cat-terracotta) !important; }
-.cat-progress-rust .ant-progress-bg { background-color: var(--cat-rust) !important; }
-.cat-progress-amber .ant-progress-bg { background-color: var(--cat-amber) !important; }
-.cat-progress-forest .ant-progress-bg { background-color: var(--cat-forest) !important; }
-.cat-progress-brown .ant-progress-bg { background-color: var(--cat-brown) !important; }
-.cat-progress-cobalt .ant-progress-bg { background-color: var(--cat-cobalt) !important; }
-.cat-progress-violet .ant-progress-bg { background-color: var(--cat-violet) !important; }
-.cat-progress-rose .ant-progress-bg { background-color: var(--cat-rose) !important; }
-.cat-progress-over .ant-progress-bg { background-color: var(--theme-color-error) !important; }
 
-/* Category Color Swatches */
-.cat-swatch-terracotta { background-color: var(--cat-terracotta) !important; }
-.cat-swatch-rust { background-color: var(--cat-rust) !important; }
-.cat-swatch-amber { background-color: var(--cat-amber) !important; }
-.cat-swatch-forest { background-color: var(--cat-forest) !important; }
-.cat-swatch-brown { background-color: var(--cat-brown) !important; }
-.cat-swatch-cobalt { background-color: var(--cat-cobalt) !important; }
-.cat-swatch-violet { background-color: var(--cat-violet) !important; }
-.cat-swatch-rose { background-color: var(--cat-rose) !important; }
-
-.cat-swatch-selected-terracotta { box-shadow: 0 0 0 2.5px var(--theme-color-modal-bg), 0 0 0 4.5px var(--cat-terracotta) !important; }
-.cat-swatch-selected-rust { box-shadow: 0 0 0 2.5px var(--theme-color-modal-bg), 0 0 0 4.5px var(--cat-rust) !important; }
-.cat-swatch-selected-amber { box-shadow: 0 0 0 2.5px var(--theme-color-modal-bg), 0 0 0 4.5px var(--cat-amber) !important; }
-.cat-swatch-selected-forest { box-shadow: 0 0 0 2.5px var(--theme-color-modal-bg), 0 0 0 4.5px var(--cat-forest) !important; }
-.cat-swatch-selected-brown { box-shadow: 0 0 0 2.5px var(--theme-color-modal-bg), 0 0 0 4.5px var(--cat-brown) !important; }
-.cat-swatch-selected-cobalt { box-shadow: 0 0 0 2.5px var(--theme-color-modal-bg), 0 0 0 4.5px var(--cat-cobalt) !important; }
-.cat-swatch-selected-violet { box-shadow: 0 0 0 2.5px var(--theme-color-modal-bg), 0 0 0 4.5px var(--cat-violet) !important; }
-.cat-swatch-selected-rose { box-shadow: 0 0 0 2.5px var(--theme-color-modal-bg), 0 0 0 4.5px var(--cat-rose) !important; }
-
-/* Ant Design Message Input */
-.chat-message-input,
-.chat-message-input:focus,
-.chat-message-input:focus-visible,
-.chat-message-input.ant-input:focus,
-.chat-message-input.ant-input-focused,
-.chat-message-input input,
-.chat-message-input input:focus,
-.chat-message-input input:focus-visible,
-.ant-input-borderless,
-.ant-input-borderless:focus,
-.ant-input-borderless:focus-visible,
-.ant-input-borderless-focused {
-  border: none !important;
-  border-color: transparent !important;
-  box-shadow: none !important;
-  outline: none !important;
+/* Category Swatch Selection Double Rings */
+[class*="cat-swatch-selected-"] {
+  box-shadow: 0 0 0 2.5px var(--theme-color-modal-bg), 0 0 0 4.5px currentColor !important;
 }
 
 /* Category Modal Tabs */
@@ -359,5 +286,3 @@ button:disabled {
   font-size: 1rem !important;
   font-weight: 600 !important;
 }
-
-

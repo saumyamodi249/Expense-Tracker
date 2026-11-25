@@ -1,14 +1,13 @@
-import ThemeSwitcher from '../themeprovide/ThemeSwitcher';
+import React from 'react';
+import Path from '../route/Path';
+import { MainLayout } from './layout';
 
-function Main() {
+const Main: React.FC = () => {
   return (
-    <div className="p-4">
-      <div className="flex items-center justify-between">
-        <h1 className="text-xl font-semibold">Expense Tracker</h1>
-        <ThemeSwitcher />
-      </div>
-    </div>
+    <MainLayout>
+      <Path />
+    </MainLayout>
   );
-}
+};
 
 export default Main;
