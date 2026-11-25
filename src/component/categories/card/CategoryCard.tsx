@@ -5,7 +5,7 @@ import type { Category } from '../../../types/categorytypes';
 import { CategoryCardHeader } from './CategoryCardHeader';
 import { CategoryCardOver } from './CategoryCardOver';
 import { CategoryProgressBar } from './CategoryProgressBar';
-import { useCategoryStats } from '../hooks/useCategoryStats';
+import { useCategoryStats } from '../hooks/useCategoryCalculationAndValidator';
 
 interface CategoryCardProps {
   category: Category;

@@ -1,7 +1,7 @@
 // src/component/categories/card/CategoryCardOver.tsx
 import React from 'react';
 import type { Category } from '../../../types/categorytypes';
-import { useCategoryStats } from '../hooks/useCategoryStats';
+import { useCategoryStats } from '../hooks/useCategoryCalculationAndValidator';
 
 interface CategoryCardOverProps {
   category: Category;

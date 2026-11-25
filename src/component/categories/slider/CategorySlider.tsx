@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Drawer, Popconfirm, Button } from 'antd';
 import { RxCross2 } from 'react-icons/rx';
 import { FiTrash2 } from 'react-icons/fi';
-import { useCategoryDrawer } from '../hooks/useCategoryDrawer';
+import { useCategoryDrawer } from '../hooks/useCategorySlider';
 import { getCategoryIconElement, normalizeCategoryColor } from '../constants/categoryConstants';
 import { DrawerSummaryBanner } from './CategoriesSliderCard';
 import { QuickTransactionForm } from './AmoutNote';

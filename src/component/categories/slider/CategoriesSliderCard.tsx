@@ -1,7 +1,7 @@
 // src/features/categories/components/drawer/DrawerSummaryBanner.tsx
 import React from 'react';
 import type { Category } from '../../../types/categorytypes';
-import { useCategoryStats } from '../hooks/useCategoryStats';
+import { useCategoryStats } from '../hooks/useCategoryCalculationAndValidator';
 import { normalizeCategoryColor } from '../constants/categoryConstants';
 import { CategoryProgressBar } from '../card/CategoryProgressBar';
 
