@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button } from 'antd';
 import { FiTrash2 } from 'react-icons/fi';
-import type { TransactionItem } from '../types/category.types';
+import type { TransactionItem } from '../../../types/categorytypes';
 import { formatCurrency } from '../utils/categoryCalculations';
 
 interface CategoryTransactionListProps {

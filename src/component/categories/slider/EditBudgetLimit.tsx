@@ -1,7 +1,7 @@
 // src/features/categories/components/drawer/EditBudgetForm.tsx
 import React, { useState } from 'react';
 import { Input, Button, message } from 'antd';
-import type { Category } from '../types/category.types';
+import type { Category } from '../../../types/categorytypes';
 import { validateAmount } from '../utils/categoryValidators';
 
 interface EditBudgetFormProps {

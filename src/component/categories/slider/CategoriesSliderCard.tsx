@@ -1,6 +1,6 @@
 // src/features/categories/components/drawer/DrawerSummaryBanner.tsx
 import React from 'react';
-import type { Category } from '../types/category.types';
+import type { Category } from '../../../types/categorytypes';
 import { useCategoryStats } from '../hooks/useCategoryStats';
 import { normalizeCategoryColor } from '../constants/categoryConstants';
 import { CategoryProgressBar } from '../card/CategoryProgressBar';
@@ -54,8 +54,8 @@ export const DrawerSummaryBanner: React.FC<DrawerSummaryBannerProps> = ({ catego
             isOver
               ? 'text-error font-bold'
               : isFullyUsed
-              ? 'text-font-secondary'
-              : `cat-text-${colorKey}`
+                ? 'text-font-secondary'
+                : `cat-text-${colorKey}`
           }
         >
           {statusText}

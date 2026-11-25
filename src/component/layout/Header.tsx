@@ -6,7 +6,7 @@ import { useUser } from '@clerk/react';
 import { useNavigate } from 'react-router-dom';
 import ThemeSwitcher from '../../themeprovide/ThemeSwitcher';
 import useProfileStore from '../../store/profileStore';
-import type { RouteOption } from '../../types/type';
+import type { RouteOption } from '../../types/auth';
 import { useCategoryStore } from '../categories/store/useCategoryStore';
 
 export interface HeaderProps {

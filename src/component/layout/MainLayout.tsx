@@ -3,7 +3,7 @@ import React from 'react';
 import { Layout } from 'antd';
 import { Sidebar } from './Sidebar';
 import { Header } from './Header';
-import type { RouteOption } from '../../types/type';
+import type { RouteOption } from '../../types/auth';
 
 const { Content } = Layout;
 

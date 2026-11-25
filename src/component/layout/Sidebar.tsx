@@ -7,7 +7,7 @@ import { CgProfile } from 'react-icons/cg';
 import { RxDashboard } from 'react-icons/rx';
 import { LuArrowLeftRight } from 'react-icons/lu';
 import Logout from '../../auth/Logout';
-import type { RouteOption } from '../../types/type';
+import type { RouteOption } from '../../types/auth';
 
 const { Sider } = Layout;
 

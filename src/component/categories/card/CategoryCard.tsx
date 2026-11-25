@@ -1,7 +1,7 @@
 // src/component/categories/card/CategoryCard.tsx
 import React from 'react';
 import { Card } from 'antd';
-import type { Category } from '../types/category.types';
+import type { Category } from '../../../types/categorytypes';
 import { CategoryCardHeader } from './CategoryCardHeader';
 import { CategoryCardOver } from './CategoryCardOver';
 import { CategoryProgressBar } from './CategoryProgressBar';

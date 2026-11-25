@@ -1,6 +1,6 @@
 // src/component/categories/card/CategoryCardOver.tsx
 import React from 'react';
-import type { Category } from '../types/category.types';
+import type { Category } from '../../../types/categorytypes';
 import { useCategoryStats } from '../hooks/useCategoryStats';
 
 interface CategoryCardOverProps {
@@ -26,8 +26,8 @@ export const CategoryCardOver: React.FC<CategoryCardOverProps> = ({ category }) 
           isOver
             ? 'text-[11px] text-error font-bold'
             : isFullyUsed
-            ? 'text-[11px] text-font-secondary font-semibold'
-            : 'text-[11px] text-font-secondary'
+              ? 'text-[11px] text-font-secondary font-semibold'
+              : 'text-[11px] text-font-secondary'
         }
       >
         {isOver ? (
