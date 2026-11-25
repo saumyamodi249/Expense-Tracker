@@ -51,9 +51,6 @@ export const QuickTransactionForm: React.FC<QuickTransactionFormProps> = ({
       <div className="flex flex-col gap-2">
         <label className="text-[13px] font-semibold text-font">Amount ($)</label>
         <Input
-          type="number"
-          step="any"
-          min="0"
           required
           value={amount}
           onChange={(e) => setAmount(e.target.value)}

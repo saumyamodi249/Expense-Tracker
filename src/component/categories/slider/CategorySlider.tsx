@@ -4,8 +4,7 @@ import { Drawer, Popconfirm, Button } from 'antd';
 import { RxCross2 } from 'react-icons/rx';
 import { FiTrash2 } from 'react-icons/fi';
 import { useCategoryDrawer } from '../hooks/useCategoryDrawer';
-import { getCategoryIconElement } from '../constants/categoryIcons';
-import { normalizeCategoryColor } from '../constants/categoryColors';
+import { getCategoryIconElement, normalizeCategoryColor } from '../constants/categoryConstants';
 import { DrawerSummaryBanner } from './CategoriesSliderCard';
 import { QuickTransactionForm } from './AmoutNote';
 import { CategoryTransactionList } from './CategoryTransactionList';
@@ -20,6 +19,7 @@ export const CategoryDetailDrawer: React.FC = () => {
     deleteCategory,
     updateLimit,
     logTransaction,
+    deleteTransaction,
   } = useCategoryDrawer();
 
   const [isEditingBudget, setIsEditingBudget] = useState(false);
@@ -87,7 +87,10 @@ export const CategoryDetailDrawer: React.FC = () => {
           )}
 
           {/* Transaction History */}
-          <CategoryTransactionList transactions={activeTransactions} />
+          <CategoryTransactionList
+            transactions={activeTransactions}
+            onDeleteTransaction={deleteTransaction}
+          />
         </div>
 
         {/* Footer matching Screenshot 4: Delete Category on left, Edit Budget Limit on right */}

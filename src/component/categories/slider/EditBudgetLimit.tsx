@@ -39,9 +39,6 @@ export const EditBudgetForm: React.FC<EditBudgetFormProps> = ({
 
       <div className="flex items-center gap-2">
         <Input
-          type="number"
-          step="any"
-          min="0"
           value={limit}
           onChange={(e) => setLimit(e.target.value)}
           placeholder="500.00"

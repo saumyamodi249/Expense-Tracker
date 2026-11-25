@@ -1,14 +1,18 @@
 // src/features/categories/components/drawer/CategoryTransactionList.tsx
 import React from 'react';
+import { Button } from 'antd';
+import { FiTrash2 } from 'react-icons/fi';
 import type { TransactionItem } from '../types/category.types';
 import { formatCurrency } from '../utils/categoryCalculations';
 
 interface CategoryTransactionListProps {
   transactions: TransactionItem[];
+  onDeleteTransaction?: (transactionId: string) => void;
 }
 
 export const CategoryTransactionList: React.FC<CategoryTransactionListProps> = ({
   transactions,
+  onDeleteTransaction,
 }) => {
   return (
     <div className="flex flex-col gap-2.5">
@@ -36,8 +40,22 @@ export const CategoryTransactionList: React.FC<CategoryTransactionListProps> = (
                 </div>
               </div>
 
-              <div className="text-xs font-bold text-font">
-                -{formatCurrency(tx.amount)}
+              <div className="flex items-center gap-2">
+                <div className="text-xs font-bold text-font">
+                  -{formatCurrency(tx.amount)}
+                </div>
+                {onDeleteTransaction && (
+                  <Button
+                    type="text"
+                    size="small"
+                    shape="circle"
+                    danger
+                    icon={<FiTrash2 size={12} />}
+                    onClick={() => onDeleteTransaction(tx.id)}
+                    className="!w-6 !h-6 !p-0 !min-w-0 !border-none text-font-tertiary hover:!text-error cursor-pointer"
+                    aria-label="Delete transaction"
+                  />
+                )}
               </div>
             </div>
           ))}

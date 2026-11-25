@@ -2,7 +2,7 @@
 import React from 'react';
 import type { Category } from '../types/category.types';
 import { useCategoryStats } from '../hooks/useCategoryStats';
-import { normalizeCategoryColor } from '../constants/categoryColors';
+import { normalizeCategoryColor } from '../constants/categoryConstants';
 import { CategoryProgressBar } from '../card/CategoryProgressBar';
 
 interface DrawerSummaryBannerProps {
@@ -14,8 +14,9 @@ export const DrawerSummaryBanner: React.FC<DrawerSummaryBannerProps> = ({ catego
     progressPercent,
     formattedSpent,
     formattedBudget,
-    formattedRemaining,
     isOver,
+    isFullyUsed,
+    statusText,
   } = useCategoryStats(category);
 
   const colorKey = normalizeCategoryColor(category.color);
@@ -45,19 +46,25 @@ export const DrawerSummaryBanner: React.FC<DrawerSummaryBannerProps> = ({ catego
 
       {/* Subline metrics */}
       <div className="flex items-center justify-between text-xs font-semibold">
-        <div className="text-font-secondary">{progressPercent}% used</div>
-        <div className={isOver ? 'text-error' : `cat-text-${colorKey}`}>
-          {isOver ? 'Over budget' : `${formattedRemaining} left`}
+        <div className={isOver ? 'text-error font-bold' : 'text-font-secondary'}>
+          {progressPercent}% used
+        </div>
+        <div
+          className={
+            isOver
+              ? 'text-error font-bold'
+              : isFullyUsed
+              ? 'text-font-secondary'
+              : `cat-text-${colorKey}`
+          }
+        >
+          {statusText}
         </div>
       </div>
 
       {/* Progress Bar */}
       <div className="w-full">
-        <CategoryProgressBar
-          percent={progressPercent}
-          color={category.color}
-          isOver={isOver}
-        />
+        <CategoryProgressBar percent={progressPercent} isOver={isOver} />
       </div>
     </div>
   );
