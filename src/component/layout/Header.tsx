@@ -1,13 +1,14 @@
 // src/component/layout/Header.tsx
 import React, { useState } from 'react';
-import { Avatar, Badge, Button, Input, Popover, Space, Tooltip, Divider } from 'antd';
-import { FiBell, FiCheck, FiSearch } from 'react-icons/fi';
+import { Avatar, Badge, Button, Input, Space, Tooltip } from 'antd';
+import { FiBell, FiSearch } from 'react-icons/fi';
 import { useUser } from '@clerk/react';
 import { useNavigate } from 'react-router-dom';
 import ThemeSwitcher from '../../themeprovide/ThemeSwitcher';
 import useProfileStore from '../../store/profileStore';
 import type { RouteOption } from '../../types/auth';
 import { useCategoryStore } from '../categories/store(Zustand)/useCategoryStore';
+import { getInitials } from '../profile/common/Profile';
 
 export interface HeaderProps {
   onSearch?: (query: string) => void;
@@ -15,7 +16,6 @@ export interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ onSearch, onNavigate }) => {
-  const [hasUnread, setHasUnread] = useState(true);
   const [searchValue, setSearchValue] = useState('');
   const setSearchQuery = useCategoryStore((state) => state.setSearchQuery);
   const navigate = useNavigate();
@@ -23,13 +23,8 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, onNavigate }) => {
   const { account } = useProfileStore();
   const { user } = useUser();
 
-  const clerkName = user?.fullName || user?.firstName;
-  const displayName =
-    account.fullName && account.fullName !== 'Aria Raymond'
-      ? account.fullName
-      : clerkName || account.fullName || 'User';
-
-  const initial = displayName.trim()[0]?.toUpperCase() || 'U';
+  const displayName = account.fullName || user?.fullName || 'User';
+  const initial = getInitials(displayName);
 
   const handleSearchChange = (val: string) => {
     setSearchValue(val);
@@ -37,38 +32,9 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, onNavigate }) => {
     onSearch?.(val);
   };
 
-  const notificationContent = (
-    <div className="w-64 p-1">
-      <div className="flex items-center justify-between">
-        <div className="text-xs font-semibold text-font">Notifications</div>
-        {hasUnread && (
-          <Button
-            type="link"
-            size="small"
-            onClick={() => setHasUnread(false)}
-            icon={<FiCheck />}
-            className="!p-0 !h-auto !text-[11px] !text-primary hover:underline cursor-pointer flex items-center gap-1"
-          >
-            Mark read
-          </Button>
-        )}
-      </div>
-
-      <Divider className="!my-2 !border-border" />
-      <div className="flex flex-col gap-2">
-        <div className="p-2 rounded-xl bg-background-secondary text-xs">
-          <p className="font-medium text-font m-0">Welcome to Expense Tracker!</p>
-          <p className="text-font-secondary text-[11px] mt-0.5 m-0">
-            Start organizing your categories, expenses, and monthly budget.
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-
   return (
     <header className="h-16 px-6 sm:px-8 border-b border-border bg-sidebar flex items-center justify-between gap-4 sticky top-0 z-10 shrink-0">
-      {/* Search Bar matching Image 2 */}
+      {/* Search Bar */}
       <div className="w-72 sm:w-80">
         <Input
           prefix={<FiSearch className="text-font-secondary mr-1 text-sm" />}
@@ -85,19 +51,23 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, onNavigate }) => {
         {/* Theme Switcher (Moon/Sun toggle) */}
         <ThemeSwitcher />
 
-        {/* Notifications Bell with badge */}
-        <Popover content={notificationContent} trigger="click" placement="bottomRight">
+        {/* Notifications Bell */}
+        <Tooltip title="Notifications">
           <Button
             type="text"
             shape="circle"
             aria-label="Notifications"
+            onClick={() => {
+              onNavigate?.('profile');
+              navigate('/profile/notifications');
+            }}
             className="!w-9 !h-9 !p-0 !flex !items-center !justify-center text-font-secondary hover:text-font hover:bg-background-tertiary transition-colors cursor-pointer relative border !border-border"
           >
-            <Badge dot={hasUnread} className="notification-badge" offset={[-2, 2]}>
+            <Badge dot className="notification-badge" offset={[-2, 2]}>
               <FiBell size={18} className="text-font-secondary hover:text-font" />
             </Badge>
           </Button>
-        </Popover>
+        </Tooltip>
 
         {/* Profile Avatar */}
         <Tooltip title="View Profile">
@@ -105,7 +75,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, onNavigate }) => {
             size={36}
             onClick={() => {
               onNavigate?.('profile');
-              navigate('/profile');
+              navigate('/profile/account');
             }}
             className="theme-avatar shrink-0 select-none cursor-pointer"
           >
