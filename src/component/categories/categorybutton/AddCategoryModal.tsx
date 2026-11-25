@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Modal, Button, Input, Tabs, message } from 'antd';
 import { RxCross2 } from 'react-icons/rx';
-import { useCategoryStore } from '../store/useCategoryStore';
+import { useCategoryStore } from '../store(Zustand)/useCategoryStore';
 import { IconPickerGrid } from './IconPickerGrid';
 import { ColorSwatchPicker } from './ColorSwatchPicker';
 import { DEFAULT_CATEGORY_COLOR } from '../constants/categoryConstants';

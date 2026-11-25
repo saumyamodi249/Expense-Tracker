@@ -1,7 +1,7 @@
 // src/features/categories/pages/CategoriesPage.tsx
 import React from 'react';
 import { useCategoryFilters } from '../hooks/useCategoryFilters';
-import { useCategoryStore } from '../store/useCategoryStore';
+import { useCategoryStore } from '../store(Zustand)/useCategoryStore';
 import { CategoryPageHeader } from '../header/Categorydescription';
 import { CategorySection } from '../card/CategorySection';
 import { CategoryCard } from '../card/CategoryCard';
