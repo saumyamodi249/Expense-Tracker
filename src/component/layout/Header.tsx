@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import { Avatar, Badge, Button, Input, Popover, Space, Tooltip } from 'antd';
 import { FiBell, FiCheck, FiSearch } from 'react-icons/fi';
 import { useUser } from '@clerk/react';
+import { useNavigate } from 'react-router-dom';
 import ThemeSwitcher from '../../themeprovide/ThemeSwitcher';
 import useProfileStore from '../../store/profileStore';
 import type { RouteOption } from '../../types/type';
-import { useCategoryStore } from '../categories';
+import { useCategoryStore } from '../categories/store/useCategoryStore';
 
 export interface HeaderProps {
   onSearch?: (query: string) => void;
@@ -17,6 +18,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, onNavigate }) => {
   const [hasUnread, setHasUnread] = useState(true);
   const [searchValue, setSearchValue] = useState('');
   const setSearchQuery = useCategoryStore((state) => state.setSearchQuery);
+  const navigate = useNavigate();
 
   const { account } = useProfileStore();
   const { user } = useUser();
@@ -63,20 +65,21 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, onNavigate }) => {
   );
 
   return (
-    <header className="w-full px-6 py-3.5 border-b border-border bg-background flex items-center justify-between gap-4 sticky top-0 z-20 shrink-0">
-      {/* Search Bar matching Screenshot */}
-      <div className="flex-1 max-w-md">
+    <header className="h-16 px-6 sm:px-8 border-b border-border bg-sidebar flex items-center justify-between gap-4 sticky top-0 z-10 shrink-0">
+      {/* Search Bar matching Image 2 */}
+      <div className="w-72 sm:w-80">
         <Input
-          prefix={<FiSearch className="text-font-tertiary mr-1.5" size={16} />}
+          prefix={<FiSearch className="text-font-secondary mr-1 text-sm" />}
+          placeholder="Search categories..."
           value={searchValue}
           onChange={(e) => handleSearchChange(e.target.value)}
-          placeholder="Search anything..."
-          className="!rounded-full !bg-background-secondary !border-border hover:!border-primary/50 focus:!border-primary !py-2 !px-3.5 !text-xs !text-font transition-all shadow-2xs"
+          allowClear
+          className="chat-search-input !rounded-full !bg-background-secondary !border-border hover:!border-border focus:!border-border !text-font !text-xs !py-1.5 !px-3 shadow-none"
         />
       </div>
 
-      {/* Right controls aligned with Ant Design Space */}
-      <Space size={14} align="center" className="shrink-0">
+      {/* Right Action Icons: Theme Toggle + Notification Bell + Avatar */}
+      <Space size={12} align="center">
         {/* Theme Switcher (Moon/Sun toggle) */}
         <ThemeSwitcher />
 
@@ -98,7 +101,10 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, onNavigate }) => {
         <Tooltip title="View Profile">
           <Avatar
             size={36}
-            onClick={() => onNavigate?.('profile')}
+            onClick={() => {
+              onNavigate?.('profile');
+              navigate('/profile');
+            }}
             className="theme-avatar shrink-0 select-none cursor-pointer"
           >
             {initial}

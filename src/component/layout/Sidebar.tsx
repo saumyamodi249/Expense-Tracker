@@ -1,6 +1,7 @@
 // src/component/layout/Sidebar.tsx
 import React from 'react';
 import { Layout, Button } from 'antd';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { BiCategoryAlt } from 'react-icons/bi';
 import { CgProfile } from 'react-icons/cg';
 import { RxDashboard } from 'react-icons/rx';
@@ -11,16 +12,25 @@ import type { RouteOption } from '../../types/type';
 const { Sider } = Layout;
 
 export interface SidebarProps {
-  currentRoute: RouteOption;
-  onNavigate: (route: RouteOption) => void;
+  currentRoute?: RouteOption;
+  onNavigate?: (route: RouteOption) => void;
   className?: string;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
-  currentRoute,
-  onNavigate,
   className = '',
 }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const currentPath = location.pathname;
+
+  const isActive = (route: string) => {
+    if (route === 'categories' && (currentPath === '/categories' || currentPath === '/')) {
+      return true;
+    }
+    return currentPath.startsWith(`/${route}`);
+  };
+
   return (
     <Sider
       width={230}
@@ -50,9 +60,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <Button
               type="text"
               icon={<RxDashboard size={17} className="shrink-0" />}
-              onClick={() => onNavigate('dashboard')}
+              onClick={() => navigate('/dashboard')}
               className={`!w-full !flex !items-center !justify-start !gap-3 !px-4 !py-2.5 !h-auto !rounded-full !text-sm cursor-pointer transition-all ${
-                currentRoute === 'dashboard'
+                isActive('dashboard')
                   ? '!bg-primary !text-on-brand !border-none !font-semibold shadow-xs'
                   : '!text-font-secondary !border-none hover:!bg-background-secondary hover:!text-font !font-medium'
               }`}
@@ -63,9 +73,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <Button
               type="text"
               icon={<LuArrowLeftRight size={17} className="shrink-0" />}
-              onClick={() => onNavigate('expenses')}
+              onClick={() => navigate('/expenses')}
               className={`!w-full !flex !items-center !justify-start !gap-3 !px-4 !py-2.5 !h-auto !rounded-full !text-sm cursor-pointer transition-all ${
-                currentRoute === 'expenses'
+                isActive('expenses')
                   ? '!bg-primary !text-on-brand !border-none !font-semibold shadow-xs'
                   : '!text-font-secondary !border-none hover:!bg-background-secondary hover:!text-font !font-medium'
               }`}
@@ -76,9 +86,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <Button
               type="text"
               icon={<BiCategoryAlt size={17} className="shrink-0" />}
-              onClick={() => onNavigate('categories')}
+              onClick={() => navigate('/categories')}
               className={`!w-full !flex !items-center !justify-start !gap-3 !px-4 !py-2.5 !h-auto !rounded-full !text-sm cursor-pointer transition-all ${
-                currentRoute === 'categories'
+                isActive('categories')
                   ? '!bg-primary !text-on-brand !border-none !font-semibold shadow-xs'
                   : '!text-font-secondary !border-none hover:!bg-background-secondary hover:!text-font !font-medium'
               }`}
@@ -89,9 +99,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <Button
               type="text"
               icon={<CgProfile size={17} className="shrink-0" />}
-              onClick={() => onNavigate('profile')}
+              onClick={() => navigate('/profile')}
               className={`!w-full !flex !items-center !justify-start !gap-3 !px-4 !py-2.5 !h-auto !rounded-xl !text-sm cursor-pointer transition-all ${
-                currentRoute === 'profile'
+                isActive('profile')
                   ? '!bg-primary !text-on-brand !border-none !font-semibold shadow-xs'
                   : '!text-font-secondary !border-none hover:!bg-background-secondary hover:!text-font !font-medium'
               }`}
