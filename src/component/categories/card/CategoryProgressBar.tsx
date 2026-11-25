@@ -9,7 +9,22 @@ export const progressClassNames: ProgressProps['classNames'] = {
   track: 'demo-progress-track',
 };
 
-export const progressStylesFn: ProgressProps['styles'] = (info): GetProp<ProgressProps, 'styles', 'Return'> => {
+export const getProgressStyles = (isOver?: boolean): ProgressProps['styles'] => (info): GetProp<ProgressProps, 'styles', 'Return'> => {
+  if (isOver) {
+    return {
+      track: {
+        backgroundColor: 'var(--theme-color-error)',
+        backgroundImage: 'linear-gradient(to right, rgb(239, 68, 68), rgb(220, 38, 38))',
+        borderRadius: 8,
+        transition: 'all 0.3s ease',
+      },
+      rail: {
+        backgroundColor: 'rgba(0, 0, 0, 0.1)',
+        borderRadius: 8,
+      },
+    };
+  }
+
   const percent = info?.props?.percent ?? 0;
   const hue = 200 - (200 * percent) / 100;
   return {
@@ -30,25 +45,28 @@ export const progressStylesFn: ProgressProps['styles'] = (info): GetProp<Progres
   };
 };
 
+export const progressStylesFn: ProgressProps['styles'] = getProgressStyles(false);
+
 interface CategoryProgressBarProps {
   percent: number;
-  color?: string;
   isOver?: boolean;
 }
 
 export const CategoryProgressBar: React.FC<CategoryProgressBarProps> = ({
   percent,
+  isOver,
 }) => {
-  const cappedPercent = Math.min(100, Math.max(0, percent));
+  const over = Boolean(isOver || percent > 100);
+  const visualPercent = Math.min(100, Math.max(0, percent));
 
   return (
     <div className="w-full">
       <Progress
-        percent={cappedPercent}
+        percent={visualPercent}
         showInfo={false}
         size="small"
         classNames={progressClassNames}
-        styles={progressStylesFn}
+        styles={getProgressStyles(over)}
       />
     </div>
   );

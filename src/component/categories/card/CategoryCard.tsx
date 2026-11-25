@@ -32,11 +32,7 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({ category, onClick })
       <div className="flex flex-col gap-2">
         <CategoryCardOver category={category} />
 
-        <CategoryProgressBar
-          percent={progressPercent}
-          color={category.color}
-          isOver={isOver}
-        />
+        <CategoryProgressBar percent={progressPercent} isOver={isOver} />
       </div>
     </Card>
   );

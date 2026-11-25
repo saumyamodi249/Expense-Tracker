@@ -1,7 +1,6 @@
 // src/features/categories/components/grid/CategoryCardHeader.tsx
 import React from 'react';
-import { getCategoryIconElement } from '../constants/categoryIcons';
-import { normalizeCategoryColor } from '../constants/categoryColors';
+import { getCategoryIconElement, normalizeCategoryColor } from '../constants/categoryConstants';
 
 interface CategoryCardHeaderProps {
   name: string;
