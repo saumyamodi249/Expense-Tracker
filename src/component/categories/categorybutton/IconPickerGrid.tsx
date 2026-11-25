@@ -1,12 +1,11 @@
 // src/features/categories/components/modals/IconPickerGrid.tsx
 import React from 'react';
 import { Button } from 'antd';
-import { SELECTABLE_ICONS } from '../constants/categoryIcons';
+import { SELECTABLE_ICONS } from '../constants/categoryConstants';
 
 interface IconPickerGridProps {
   selectedIcon: string;
   onSelect: (iconKey: string) => void;
-  accentColor?: string;
 }
 
 export const IconPickerGrid: React.FC<IconPickerGridProps> = ({

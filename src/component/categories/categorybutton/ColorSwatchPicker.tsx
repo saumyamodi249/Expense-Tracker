@@ -5,7 +5,7 @@ import {
   CATEGORY_COLORS,
   normalizeCategoryColor,
   type CategoryColorKey,
-} from '../constants/categoryColors';
+} from '../constants/categoryConstants';
 
 interface ColorSwatchPickerProps {
   selectedColor: string;

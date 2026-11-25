@@ -5,7 +5,7 @@ import { RxCross2 } from 'react-icons/rx';
 import { useCategoryStore } from '../store/useCategoryStore';
 import { IconPickerGrid } from './IconPickerGrid';
 import { ColorSwatchPicker } from './ColorSwatchPicker';
-import { DEFAULT_CATEGORY_COLOR } from '../constants/categoryColors';
+import { DEFAULT_CATEGORY_COLOR } from '../constants/categoryConstants';
 import { validateCategoryName, validateAmount } from '../utils/categoryValidators';
 
 export const AddCategoryModal: React.FC = () => {
@@ -131,9 +131,6 @@ export const AddCategoryModal: React.FC = () => {
             <div className="flex flex-col gap-1">
               <label className="text-xs font-semibold text-font">Monthly Limit ($)</label>
               <Input
-                type="number"
-                step="any"
-                min="0"
                 value={budget}
                 onChange={(e) => setBudget(e.target.value)}
                 placeholder="500.00"
@@ -145,9 +142,6 @@ export const AddCategoryModal: React.FC = () => {
             <div className="flex flex-col gap-1">
               <label className="text-xs font-semibold text-font">Initial Spent Amount ($)</label>
               <Input
-                type="number"
-                step="any"
-                min="0"
                 value={initialSpent}
                 onChange={(e) => setInitialSpent(e.target.value)}
                 placeholder="0.00"
@@ -159,7 +153,6 @@ export const AddCategoryModal: React.FC = () => {
           <IconPickerGrid
             selectedIcon={icon}
             onSelect={setIcon}
-            accentColor={color}
           />
 
           <ColorSwatchPicker
