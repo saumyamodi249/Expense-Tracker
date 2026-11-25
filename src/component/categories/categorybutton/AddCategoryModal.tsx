@@ -81,7 +81,7 @@ export const AddCategoryModal: React.FC = () => {
       footer={null}
       centered
       closable={false}
-      width={440}
+      width={500}
       className="theme-modal"
     >
       <div className="flex flex-col gap-4 py-1">
@@ -159,6 +159,7 @@ export const AddCategoryModal: React.FC = () => {
             selectedColor={color}
             onSelect={setColor}
           />
+
 
           <div className="flex items-center justify-end gap-3 pt-4 border-t border-border mt-1">
             <Button
