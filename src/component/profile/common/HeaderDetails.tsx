@@ -1,11 +1,5 @@
-import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import type { ProfileTab } from '../../../types/profiletypes';
-
-export interface HeaderDetailsProps {
-  activeTab?: ProfileTab;
-  onTabChange?: (tab: ProfileTab) => void;
-}
 
 export const tabTitles: Record<ProfileTab, { title: string; subtitle: string }> = {
   account: {
@@ -22,31 +16,22 @@ export const tabTitles: Record<ProfileTab, { title: string; subtitle: string }> 
   },
 };
 
-export const HeaderDetails: React.FC<HeaderDetailsProps> = ({
-  activeTab: propActiveTab,
-  onTabChange,
-}) => {
+export const HeaderDetails = () => {
   const { tab } = useParams<{ tab?: string }>();
   const navigate = useNavigate();
 
   const activeTab: ProfileTab =
-    propActiveTab ||
-    (tab === 'appearance' || tab === 'notifications' ? tab : 'account');
+    tab === 'appearance' || tab === 'notifications' ? tab : 'account';
   const currentInfo = tabTitles[activeTab] || tabTitles.account;
-
-  const handleProfileClick = () => {
-    if (onTabChange) {
-      onTabChange('account');
-    } else {
-      navigate('/profile/account');
-    }
-  };
 
   return (
     <div className="flex flex-col gap-4">
       {/* Breadcrumb: Profile › [activeTab] */}
       <div className="flex items-center gap-2 text-xs text-font-tertiary">
-        <div onClick={handleProfileClick} className="cursor-pointer">
+        <div
+          onClick={() => navigate('/profile/account')}
+          className="cursor-pointer"
+        >
           Profile
         </div>
         <div className="text-font-tertiary">›</div>
