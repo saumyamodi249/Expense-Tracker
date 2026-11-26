@@ -1,4 +1,3 @@
-// src/features/categories/store/useCategoryStore.ts
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import type {
@@ -133,5 +132,20 @@ export const useCategoryStore = create<CategoryState>()(
     }
   )
 );
+
+export const syncCategoryUser = (userId: string) => {
+  useCategoryStore.setState({
+    categories: [],
+    transactions: [],
+    searchQuery: '',
+    activeCategoryId: null,
+    isAddModalOpen: false,
+    isDrawerOpen: false,
+  });
+  useCategoryStore.persist.setOptions({
+    name: `expense_tracker_categories_store_${userId}`,
+  });
+  useCategoryStore.persist.rehydrate();
+};
 
 export default useCategoryStore;

@@ -14,6 +14,18 @@ interface ProfileStore {
   resetAppearance: () => void;
 }
 
+const defaultAccount: AccountSettings = {
+  firstName: "",
+  lastName: "",
+  fullName: "",
+  email: "",
+  age: null,
+  dateOfBirth: null,
+  currency: "USD ($)",
+  timezone: "GMT+05:30",
+  twoFactorEnabled: true,
+};
+
 const defaultAppearance: AppearanceSettings = {
   theme: "light",
   accent: "charcoal",
@@ -22,17 +34,7 @@ const defaultAppearance: AppearanceSettings = {
 export const useProfileStore = create<ProfileStore>()(
   persist(
     (set) => ({
-      account: {
-        firstName: "Saumya",
-        lastName: "Modi",
-        fullName: "Saumya Modi",
-        email: "saumyamodi2007@gmail.com",
-        age: 21,
-        dateOfBirth: "2003-05-15",
-        currency: "USD ($)",
-        timezone: "GMT+05:30",
-        twoFactorEnabled: true,
-      },
+      account: defaultAccount,
 
       appearance: defaultAppearance,
 
@@ -93,5 +95,29 @@ export const useProfileStore = create<ProfileStore>()(
     }
   )
 );
+
+export const syncProfileUser = (clerkUser: {
+  id: string;
+  firstName?: string | null;
+  lastName?: string | null;
+  fullName?: string | null;
+  email?: string | null;
+}) => {
+  useProfileStore.setState({
+    account: defaultAccount,
+    appearance: defaultAppearance,
+  });
+  useProfileStore.persist.setOptions({
+    name: `expense-tracker-profile-settings-${clerkUser.id}`,
+  });
+  useProfileStore.persist.rehydrate();
+
+  const current = useProfileStore.getState().account;
+  const firstName = current.firstName || clerkUser.firstName || (clerkUser.fullName ? clerkUser.fullName.split(" ")[0] : "") || "";
+  const lastName = current.lastName || clerkUser.lastName || (clerkUser.fullName ? clerkUser.fullName.split(" ").slice(1).join(" ") : "") || "";
+  const email = current.email || clerkUser.email || "";
+
+  useProfileStore.getState().updateAccount({ firstName, lastName, email });
+};
 
 export default useProfileStore;
