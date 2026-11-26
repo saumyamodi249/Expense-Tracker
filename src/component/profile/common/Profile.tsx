@@ -7,19 +7,37 @@ export interface ProfileCardProps {
   className?: string;
 }
 
-export function getInitials(name?: string): string {
-  const parts = name?.trim().split(/\s+/).filter(Boolean) || [];
-  if (!parts.length) return 'U';
-  return (parts.length === 1 ? parts[0][0] : parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+export function getInitials(firstName?: string | null, lastName?: string | null): string {
+  const f = firstName?.trim();
+  const l = lastName?.trim();
+
+  if (f && l) {
+    return (f[0] + l[0]).toUpperCase();
+  }
+  if (f) {
+    if (lastName === undefined) {
+      const parts = f.split(/\s+/).filter(Boolean);
+      if (parts.length > 1) {
+        return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+      }
+    }
+    return f[0].toUpperCase();
+  }
+  if (l) {
+    return l[0].toUpperCase();
+  }
+  return 'U';
 }
 
 export const ProfileCard: React.FC<ProfileCardProps> = ({ className = '' }) => {
   const { account } = useProfileStore();
   const { user } = useUser();
 
-  const displayName = account.fullName || user?.fullName || 'User';
+  const userFirst = account.firstName || user?.firstName || (user?.fullName ? user.fullName.split(' ')[0] : '');
+  const userLast = account.lastName || user?.lastName || (user?.fullName ? user.fullName.split(' ').slice(1).join(' ') : '');
+  const displayName = `${userFirst || ''} ${userLast || ''}`.trim() || 'User';
   const displayEmail = account.email || user?.primaryEmailAddress?.emailAddress || '';
-  const initials = getInitials(displayName);
+  const initials = getInitials(userFirst, userLast);
 
   return (
     <Card

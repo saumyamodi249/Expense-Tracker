@@ -23,8 +23,9 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, onNavigate }) => {
   const { account } = useProfileStore();
   const { user } = useUser();
 
-  const displayName = account.fullName || user?.fullName || 'User';
-  const initial = getInitials(displayName);
+  const userFirst = account.firstName || user?.firstName || (account.fullName ? account.fullName.split(' ')[0] : user?.fullName ? user.fullName.split(' ')[0] : '');
+  const userLast = account.lastName || user?.lastName || (account.fullName ? account.fullName.split(' ').slice(1).join(' ') : user?.fullName ? user.fullName.split(' ').slice(1).join(' ') : '');
+  const initial = getInitials(userFirst, userLast);
 
   const handleSearchChange = (val: string) => {
     setSearchValue(val);
