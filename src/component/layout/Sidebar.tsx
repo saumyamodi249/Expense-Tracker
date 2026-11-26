@@ -17,6 +17,20 @@ export interface SidebarProps {
   className?: string;
 }
 
+interface NavItem {
+  route: RouteOption;
+  label: string;
+  path: string;
+  icon: React.ComponentType<{ size?: number; className?: string }>;
+}
+
+const NAV_ITEMS: NavItem[] = [
+  { route: 'dashboard', label: 'Dashboard', path: '/dashboard', icon: RxDashboard },
+  { route: 'expenses', label: 'Transactions', path: '/expenses', icon: LuArrowLeftRight },
+  { route: 'categories', label: 'Categories', path: '/categories', icon: BiCategoryAlt },
+  { route: 'profile', label: 'Profile', path: '/profile', icon: CgProfile },
+];
+
 export const Sidebar: React.FC<SidebarProps> = ({
   className = '',
 }) => {
@@ -57,57 +71,21 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
           {/* Navigation pill buttons */}
           <nav className="flex flex-col gap-1.5">
-            <Button
-              type="text"
-              icon={<RxDashboard size={17} className="shrink-0" />}
-              onClick={() => navigate('/dashboard')}
-              className={`!w-full !flex !items-center !justify-start !gap-3 !px-4 !py-2.5 !h-auto !rounded-full !text-sm cursor-pointer transition-all ${
-                isActive('dashboard')
-                  ? '!bg-primary !text-on-brand !border-none !font-semibold shadow-xs'
-                  : '!text-font-secondary !border-none hover:!bg-background-secondary hover:!text-font !font-medium'
-              }`}
-            >
-              Dashboard
-            </Button>
-
-            <Button
-              type="text"
-              icon={<LuArrowLeftRight size={17} className="shrink-0" />}
-              onClick={() => navigate('/expenses')}
-              className={`!w-full !flex !items-center !justify-start !gap-3 !px-4 !py-2.5 !h-auto !rounded-full !text-sm cursor-pointer transition-all ${
-                isActive('expenses')
-                  ? '!bg-primary !text-on-brand !border-none !font-semibold shadow-xs'
-                  : '!text-font-secondary !border-none hover:!bg-background-secondary hover:!text-font !font-medium'
-              }`}
-            >
-              Transactions
-            </Button>
-
-            <Button
-              type="text"
-              icon={<BiCategoryAlt size={17} className="shrink-0" />}
-              onClick={() => navigate('/categories')}
-              className={`!w-full !flex !items-center !justify-start !gap-3 !px-4 !py-2.5 !h-auto !rounded-full !text-sm cursor-pointer transition-all ${
-                isActive('categories')
-                  ? '!bg-primary !text-on-brand !border-none !font-semibold shadow-xs'
-                  : '!text-font-secondary !border-none hover:!bg-background-secondary hover:!text-font !font-medium'
-              }`}
-            >
-              Categories
-            </Button>
-
-            <Button
-              type="text"
-              icon={<CgProfile size={17} className="shrink-0" />}
-              onClick={() => navigate('/profile')}
-              className={`!w-full !flex !items-center !justify-start !gap-3 !px-4 !py-2.5 !h-auto !rounded-xl !text-sm cursor-pointer transition-all ${
-                isActive('profile')
-                  ? '!bg-primary !text-on-brand !border-none !font-semibold shadow-xs'
-                  : '!text-font-secondary !border-none hover:!bg-background-secondary hover:!text-font !font-medium'
-              }`}
-            >
-              Profile
-            </Button>
+            {NAV_ITEMS.map(({ route, label, path, icon: Icon }) => (
+              <Button
+                key={route}
+                type="text"
+                icon={<Icon size={17} className="shrink-0" />}
+                onClick={() => navigate(path)}
+                className={`!w-full !flex !items-center !justify-start !gap-3 !px-4 !py-2.5 !h-auto !rounded-full !text-sm cursor-pointer transition-all ${
+                  isActive(route)
+                    ? '!bg-primary !text-on-brand !border-none !font-semibold shadow-xs'
+                    : '!text-font-secondary !border-none hover:!bg-background-secondary hover:!text-font !font-medium'
+                }`}
+              >
+                {label}
+              </Button>
+            ))}
           </nav>
         </div>
 
