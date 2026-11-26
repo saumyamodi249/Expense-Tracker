@@ -75,14 +75,20 @@ export const useCategoryStore = create<CategoryState>()(
       // 4. Log Transaction
       logTransaction: (dto) => {
         const amount = Math.max(0, Number(dto.amount) || 0);
+        const now = new Date();
         const newTx: TransactionItem = {
-          id: `tx-${Date.now()}`,
+          id: `tx-${now.getTime()}`,
           categoryId: dto.categoryId,
           amount,
-          note: dto.note.trim() || 'Expense',
-          date: new Date().toLocaleDateString('en-US', {
+          note: dto.note?.trim() || '',
+          date: now.toLocaleDateString('en-US', {
             month: 'short',
             day: '2-digit',
+          }),
+          time: now.toLocaleTimeString('en-US', {
+            hour: 'numeric',
+            minute: '2-digit',
+            hour12: true,
           }),
         };
 

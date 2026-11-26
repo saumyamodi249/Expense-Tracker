@@ -42,19 +42,18 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({ className = '' }) => {
   return (
     <Card
       className={`!rounded-2xl !border !border-border !bg-modal-bg shadow-xs ${className}`}
-      classNames={{
-        body: '!p-6 !flex !flex-col !items-center !text-center',
-      }}
     >
-      <Avatar
-        size={80}
-        className="mb-3 theme-avatar shrink-0 select-none text-2xl font-bold"
-      >
-        {initials}
-      </Avatar>
+      <div className="flex flex-col items-center text-center">
+        <Avatar
+          size={80}
+          className="mb-3 theme-avatar shrink-0 select-none text-2xl font-bold"
+        >
+          {initials}
+        </Avatar>
 
-      <h3 className="text-xl font-semibold text-font mt-1">{displayName}</h3>
-      <div className="text-xs text-font-secondary mt-1 break-all">{displayEmail}</div>
+        <h3 className="text-xl font-semibold text-font mt-1">{displayName}</h3>
+        <div className="text-xs text-font-secondary mt-1 break-all">{displayEmail}</div>
+      </div>
     </Card>
   );
 };

@@ -24,14 +24,6 @@
     height: 100%;
   }
 
-  .ant-layout {
-    min-height: 100vh !important;
-  }
-
-  .ant-layout-sider {
-    min-height: 100vh !important;
-  }
-
   html::-webkit-scrollbar,
   body::-webkit-scrollbar,
   *::-webkit-scrollbar {
@@ -59,40 +51,36 @@
   /* Font */
   --theme-color-font: light-dark(#2A2521, #ffffff);
   --theme-color-font-secondary: light-dark(#7C746C, #9ca3af);
-  --theme-color-font-tertiary: light-dark(#ABA49C, #6b7280);
+  --theme-color-font-tertiary: light-dark(#ABA49C, #7e8781);
 
   /* Background */
   --theme-color-background: light-dark(#FAF7F2, #131714);
-  --theme-color-background-secondary: light-dark(#F4EFEA, #181b19);
+  --theme-color-background-secondary: light-dark(#F4EFEA, #212623);
   --theme-color-background-tertiary: light-dark(#ECE6DD, #101311);
   --theme-color-sidebar: light-dark(#ffffff, #181b19);
 
   /* Border */
-  --theme-color-border: light-dark(#ECE6DD, #262c28);
+  --theme-color-border: light-dark(#ECE6DD, #2e3530);
   --theme-color-border-secondary: light-dark(#F4EFEA, #1d221f);
 
   /* Modal & Card */
   --theme-color-modal-bg: light-dark(#ffffff, #181b19);
   --theme-color-modal-input: light-dark(#FAF7F2, #101311);
-  --theme-color-modal-input-border: light-dark(#2d3139, #525a68);
 
   /* Status */
   --theme-color-success: light-dark(#3B7E58, #22c55e);
   --theme-color-warning: #f59e0b;
   --theme-color-error: light-dark(#dc2626, #ef4444);
-
-  /* Layout */
-  --theme-radius: 16px;
-  --theme-tablet-breakpoint: 768px;
-  --theme-desktop-breakpoint: 1280px;
 }
 
-:root[data-color-scheme="light"] {
-  color-scheme: light;
-}
-
-:root[data-color-scheme="dark"] {
+:root[data-color-scheme="dark"],
+:root.scheme-dark {
   color-scheme: dark;
+}
+
+:root[data-color-scheme="light"],
+:root.scheme-light {
+  color-scheme: light;
 }
 
 /* Theme Mapping */
@@ -116,122 +104,43 @@
 
   --color-modal-bg: var(--theme-color-modal-bg);
   --color-modal-input: var(--theme-color-modal-input);
-  --color-modal-input-border: var(--theme-color-modal-input-border);
 
   --color-success: var(--theme-color-success);
   --color-warning: var(--theme-color-warning);
   --color-error: var(--theme-color-error);
-
-  --radius-theme: var(--theme-radius);
-
-  --breakpoint-tablet: 768px;
-  --breakpoint-desktop: 1280px;
 }
 
-/* Buttons */
-button {
-  cursor: pointer;
-}
-
-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.4;
-}
-
-/* Hide Scrollbar */
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* Ant Design Modal Theme Integration */
+/* Ant Design Modal */
 .ant-modal .ant-modal-content,
 .ant-modal .ant-modal-container {
-  background-color: var(--theme-color-modal-bg) !important;
-  color: var(--theme-color-font) !important;
   border: 1px solid var(--theme-color-border) !important;
-  border-radius: 20px !important;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4) !important;
-}
-
-.ant-modal .ant-modal-header {
-  background-color: transparent !important;
-  color: var(--theme-color-font) !important;
-}
-
-.ant-modal .ant-modal-title {
-  color: var(--theme-color-font) !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4) !important;
 }
 
 .ant-modal .ant-modal-close {
   color: var(--theme-color-font-secondary) !important;
 }
 
-.ant-modal .ant-modal-close:hover {
-  color: var(--theme-color-font) !important;
-  background-color: var(--theme-color-background-tertiary) !important;
-}
-
-.ant-modal .ant-form-item-label > label {
-  color: var(--theme-color-font-secondary) !important;
-}
-
-.ant-modal .ant-input,
-.ant-modal .ant-input-number,
-.ant-modal .ant-input-number-input {
-  background-color: var(--theme-color-modal-input) !important;
-  color: var(--theme-color-font) !important;
-  border-color: var(--theme-color-border) !important;
-}
-
-.ant-modal .ant-divider {
-  border-color: var(--theme-color-border) !important;
-}
-
-/* Ant Design Search Input */
-.chat-search-input.ant-input-affix-wrapper,
-.chat-search-input.ant-input-affix-wrapper:focus,
-.chat-search-input.ant-input-affix-wrapper-focused,
-.chat-search-input.ant-input-affix-wrapper:focus-within,
-.chat-search-input.ant-input-affix-wrapper:hover {
-  border-color: var(--theme-color-border) !important;
+/* Ant Design Inputs & Icons Theme Integration */
+.chat-search-input.ant-input-affix-wrapper {
   box-shadow: none !important;
   outline: none !important;
 }
 
-/* Ant Design Select Theme Integration */
-.ant-select-dropdown {
-  background-color: var(--theme-color-modal-bg) !important;
-  border: 1px solid var(--theme-color-border) !important;
-  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.1) !important;
+input::placeholder,
+textarea::placeholder,
+.ant-input::placeholder,
+.ant-picker-input > input::placeholder {
+  color: var(--theme-color-font-secondary) !important;
+  opacity: 0.85 !important;
 }
 
-.ant-select-item {
-  color: var(--theme-color-font) !important;
-}
-
-.ant-select-item-option-active:not(.ant-select-item-option-selected) {
-  background-color: var(--theme-color-background-secondary) !important;
-  color: var(--theme-color-font) !important;
-}
-
-.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
-  background-color: var(--theme-color-primary) !important;
-}
-
-.ant-select-item-option-selected:not(.ant-select-item-option-disabled) .ant-select-item-option-content,
-.ant-select-item-option-selected:not(.ant-select-item-option-disabled) .ant-select-item-option-state {
-  color: var(--theme-color-on-brand) !important;
-  font-weight: 600 !important;
-}
-
-.ant-select-selector .ant-select-selection-item {
-  color: var(--theme-color-font) !important;
-  font-size: 14px;
+.ant-input-prefix,
+.ant-input-suffix,
+.ant-input-clear-icon,
+.ant-select-suffix,
+.ant-select-arrow {
+  color: var(--theme-color-font-secondary) !important;
 }
 
 /* Avatar Theme */
@@ -275,17 +184,17 @@ button:disabled {
 :root[data-accent="teal"]     { --theme-color-primary: light-dark(#0f766e, #14b8a6); --theme-color-primary-hover: light-dark(#115e59, #0d9488); }
 :root[data-accent="green"]    { --theme-color-primary: light-dark(#15803d, #22c55e); --theme-color-primary-hover: light-dark(#166534, #16a34a); }
 
-/* Unified Color Palette (Single source of truth per color) */
-.swatch-charcoal, .cat-badge-charcoal, .cat-dot-charcoal, .cat-text-charcoal, .cat-swatch-charcoal, .cat-badge-brown, .cat-dot-brown, .cat-text-brown, .cat-swatch-brown { color: light-dark(#2d3139, #525a68) !important; }
-.swatch-blue,     .cat-badge-blue,     .cat-dot-blue,     .cat-text-blue,     .cat-swatch-blue,     .cat-badge-cobalt, .cat-dot-cobalt, .cat-text-cobalt, .cat-swatch-cobalt { color: light-dark(#3b6fd8, #647FCE) !important; }
-.swatch-indigo,   .cat-badge-indigo,   .cat-dot-indigo,   .cat-text-indigo,   .cat-swatch-indigo   { color: light-dark(#4f46e5, #7c77f7) !important; }
-.swatch-purple,   .cat-badge-purple,   .cat-dot-purple,   .cat-text-purple,   .cat-swatch-purple,   .cat-badge-violet, .cat-dot-violet, .cat-text-violet, .cat-swatch-violet { color: light-dark(#794fbd, #9875C5) !important; }
-.swatch-rose,     .cat-badge-rose,     .cat-dot-rose,     .cat-text-rose,     .cat-swatch-rose     { color: light-dark(#c44059, #D45D70) !important; }
-.swatch-crimson,  .cat-badge-crimson,  .cat-dot-crimson,  .cat-text-crimson,  .cat-swatch-crimson,  .cat-badge-rust,   .cat-dot-rust,   .cat-text-rust,   .cat-swatch-rust   { color: light-dark(#b91c1c, #f87171) !important; }
-.swatch-orange,   .cat-badge-orange,   .cat-dot-orange,   .cat-text-orange,   .cat-swatch-orange,   .cat-badge-terracotta, .cat-dot-terracotta, .cat-text-terracotta, .cat-swatch-terracotta { color: light-dark(#c85628, #E47742) !important; }
-.swatch-amber,    .cat-badge-amber,    .cat-dot-amber,    .cat-text-amber,    .cat-swatch-amber    { color: light-dark(#b45309, #f59e0b) !important; }
-.swatch-teal,     .cat-badge-teal,     .cat-dot-teal,     .cat-text-teal,     .cat-swatch-teal     { color: light-dark(#0f766e, #14b8a6) !important; }
-.swatch-green,    .cat-badge-green,    .cat-dot-green,    .cat-text-green,    .cat-swatch-green,    .cat-badge-forest, .cat-dot-forest, .cat-text-forest, .cat-swatch-forest { color: light-dark(#15803d, #22c55e) !important; }
+/* Unified Color Palette */
+[class*="-charcoal"], [class*="-brown"] { color: light-dark(#2d3139, #525a68) !important; }
+[class*="-blue"], [class*="-cobalt"]   { color: light-dark(#3b6fd8, #647FCE) !important; }
+[class*="-indigo"]                     { color: light-dark(#4f46e5, #7c77f7) !important; }
+[class*="-purple"], [class*="-violet"] { color: light-dark(#794fbd, #9875C5) !important; }
+[class*="-rose"]                       { color: light-dark(#c44059, #D45D70) !important; }
+[class*="-crimson"], [class*="-rust"]  { color: light-dark(#b91c1c, #f87171) !important; }
+[class*="-orange"], [class*="-terracotta"] { color: light-dark(#c85628, #E47742) !important; }
+[class*="-amber"]                      { color: light-dark(#b45309, #f59e0b) !important; }
+[class*="-teal"]                       { color: light-dark(#0f766e, #14b8a6) !important; }
+[class*="-green"], [class*="-forest"]  { color: light-dark(#15803d, #22c55e) !important; }
 
 /* Swatches & Dots background */
 [class*="swatch-"], [class*="cat-dot-"] {
@@ -313,7 +222,3 @@ button:disabled {
   padding: 8px 20px !important;
 }
 
-.category-modal-tabs .ant-tabs-tab-btn {
-  font-size: 1rem !important;
-  font-weight: 600 !important;
-}

@@ -1,4 +1,4 @@
-// src/component/categories/hooks/useCategoryStats.ts
+import { useCategoryStore } from '../store(Zustand)/useCategoryStore';
 import type { Category } from '../../../types/categorytypes';
 import {
   calcProgressPercent,
@@ -58,6 +58,21 @@ export function useCategoryStats(category?: Category) {
     formattedRemaining,
     formattedOverspent,
   };
+}
+
+export function useTotalCategoryStats() {
+  const categories = useCategoryStore((state) => state.categories);
+  const totalBudget = categories.reduce((sum, c) => sum + (c.budget || 0), 0);
+  const totalSpent = categories.reduce((sum, c) => sum + (c.spent || 0), 0);
+
+  return useCategoryStats({
+    id: 'total',
+    name: 'Total Budget',
+    budget: totalBudget,
+    spent: totalSpent,
+    color: 'charcoal',
+    icon: 'wallet',
+  });
 }
 
 export default useCategoryStats;
