@@ -1,7 +1,6 @@
-// src/features/categories/hooks/useCategoryFilters.ts
 import { useCategoryStore } from '../store(Zustand)/useCategoryStore';
 
-export function useCategoryFilters() {
+export function useCategoryFilterSearch() {
   const categories = useCategoryStore((state) => state.categories);
   const searchQuery = useCategoryStore((state) => state.searchQuery);
   const setSearchQuery = useCategoryStore((state) => state.setSearchQuery);
@@ -22,4 +21,4 @@ export function useCategoryFilters() {
   };
 }
 
-export default useCategoryFilters;
+export default useCategoryFilterSearch;

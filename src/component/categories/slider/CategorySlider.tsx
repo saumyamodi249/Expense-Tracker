@@ -1,16 +1,15 @@
-// src/features/categories/components/drawer/CategoryDetailDrawer.tsx
 import React, { useState } from 'react';
 import { Drawer, Popconfirm, Button, Divider } from 'antd';
 import { RxCross2 } from 'react-icons/rx';
 import { FiTrash2 } from 'react-icons/fi';
-import { useCategoryDrawer } from '../hooks/useCategorySlider';
+import { useCategorySlider } from '../hooks/useCategorySlider';
 import { getCategoryIconElement, normalizeCategoryColor } from '../constants/categoryConstants';
-import { DrawerSummaryBanner } from './CategoriesSliderCard';
-import { QuickTransactionForm } from './AmoutNote';
+import { CategoriesSliderCard } from './CategoriesSliderCard';
+import { AmoutNote } from './AmoutNote';
 import { CategoryTransactionList } from './CategoryTransactionList';
-import { EditBudgetForm } from './EditBudgetLimit';
+import { EditBudgetLimit } from './EditBudgetLimit';
 
-export const CategoryDetailDrawer: React.FC = () => {
+export const CategorySlider: React.FC = () => {
   const {
     isDrawerOpen,
     activeCategory,
@@ -20,7 +19,7 @@ export const CategoryDetailDrawer: React.FC = () => {
     updateLimit,
     logTransaction,
     deleteTransaction,
-  } = useCategoryDrawer();
+  } = useCategorySlider();
 
   const [isEditingBudget, setIsEditingBudget] = useState(false);
 
@@ -72,17 +71,17 @@ export const CategoryDetailDrawer: React.FC = () => {
           <Divider className="!my-1 !border-border" />
 
           {/* Big Figure Summary Banner */}
-          <DrawerSummaryBanner category={activeCategory} />
+          <CategoriesSliderCard category={activeCategory} />
 
           {/* Inline Edit Budget Form if active, otherwise Quick Transaction Form */}
           {isEditingBudget ? (
-            <EditBudgetForm
+            <EditBudgetLimit
               category={activeCategory}
               onUpdateLimit={updateLimit}
               onClose={() => setIsEditingBudget(false)}
             />
           ) : (
-            <QuickTransactionForm
+            <AmoutNote
               category={activeCategory}
               onLogTransaction={logTransaction}
             />
@@ -130,4 +129,4 @@ export const CategoryDetailDrawer: React.FC = () => {
   );
 };
 
-export default CategoryDetailDrawer;
+export default CategorySlider;

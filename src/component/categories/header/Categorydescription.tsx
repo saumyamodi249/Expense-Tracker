@@ -1,17 +1,16 @@
-// src/features/categories/components/header/CategoryPageHeader.tsx
 import React from 'react';
 import { Button } from 'antd';
 import { RxPlus } from 'react-icons/rx';
-import CategoryBreadcrumb from './CategoryNav';
+import CategoryNav from './CategoryNav';
 
-interface CategoryPageHeaderProps {
+interface CategorydescriptionProps {
   onAddClick: () => void;
 }
 
-export const CategoryPageHeader: React.FC<CategoryPageHeaderProps> = ({ onAddClick }) => {
+export const Categorydescription: React.FC<CategorydescriptionProps> = ({ onAddClick }) => {
   return (
     <div className="flex flex-col gap-1.5 w-full">
-      <CategoryBreadcrumb />
+      <CategoryNav />
 
       <div className="flex items-start sm:items-center justify-between gap-4 pt-1 w-full">
         <div>
@@ -36,4 +35,4 @@ export const CategoryPageHeader: React.FC<CategoryPageHeaderProps> = ({ onAddCli
   );
 };
 
-export default CategoryPageHeader;
+export default Categorydescription;

@@ -1,16 +1,15 @@
-// src/features/categories/components/drawer/EditBudgetForm.tsx
 import React, { useState } from 'react';
 import { Input, Button, message } from 'antd';
 import type { Category } from '../../../types/categorytypes';
 import { validateAmount } from '../utils/categoryValidators';
 
-interface EditBudgetFormProps {
+interface EditBudgetLimitProps {
   category: Category;
   onUpdateLimit: (categoryId: string, newLimit: number) => void;
   onClose: () => void;
 }
 
-export const EditBudgetForm: React.FC<EditBudgetFormProps> = ({
+export const EditBudgetLimit: React.FC<EditBudgetLimitProps> = ({
   category,
   onUpdateLimit,
   onClose,
@@ -62,4 +61,4 @@ export const EditBudgetForm: React.FC<EditBudgetFormProps> = ({
   );
 };
 
-export default EditBudgetForm;
+export default EditBudgetLimit;

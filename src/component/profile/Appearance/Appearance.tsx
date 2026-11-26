@@ -1,5 +1,5 @@
 import { Card, Button, message } from 'antd';
-import ThemePreferences from './ApperanceThemePreferences';
+import ApperanceThemePreferences from './ApperanceThemePreferences';
 import ApperanceColor from './ApperanceColor';
 import ApperanceDashboard from './ApperanceDashboard';
 import ApperanceHistory from './ApperanceHistory';
@@ -11,7 +11,7 @@ export const Appearance = () => {
 
   return (
     <div className="flex flex-col gap-6 w-full max-w-4xl">
-      <ThemePreferences />
+      <ApperanceThemePreferences />
       <ApperanceColor />
       <Card
         className="!rounded-2xl !border !border-border !bg-modal-bg shadow-xs"

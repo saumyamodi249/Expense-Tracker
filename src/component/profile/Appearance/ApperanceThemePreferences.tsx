@@ -9,7 +9,7 @@ const THEME_OPTIONS = [
   { id: 'system', label: 'System', icon: FiMonitor },
 ] as const;
 
-export const ThemePreferences = () => {
+export const ApperanceThemePreferences = () => {
   const { appearance, updateAppearance } = useProfileStore();
 
   const handleThemeChange = (theme: 'light' | 'dark' | 'system') => {
@@ -64,4 +64,4 @@ export const ThemePreferences = () => {
   );
 };
 
-export default ThemePreferences;
+export default ApperanceThemePreferences;

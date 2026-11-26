@@ -1,10 +1,9 @@
-// src/features/categories/components/drawer/QuickTransactionForm.tsx
 import React, { useState } from 'react';
 import { Input, Button, message } from 'antd';
 import type { Category } from '../../../types/categorytypes';
 import { validateAmount } from '../utils/categoryValidators';
 
-interface QuickTransactionFormProps {
+interface AmoutNoteProps {
   category: Category;
   onLogTransaction: (dto: {
     categoryId: string;
@@ -13,7 +12,7 @@ interface QuickTransactionFormProps {
   }) => void;
 }
 
-export const QuickTransactionForm: React.FC<QuickTransactionFormProps> = ({
+export const AmoutNote: React.FC<AmoutNoteProps> = ({
   category,
   onLogTransaction,
 }) => {
@@ -78,4 +77,4 @@ export const QuickTransactionForm: React.FC<QuickTransactionFormProps> = ({
   );
 };
 
-export default QuickTransactionForm;
+export default AmoutNote;

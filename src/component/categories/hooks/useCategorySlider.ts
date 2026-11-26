@@ -1,7 +1,6 @@
-// src/features/categories/hooks/useCategoryDrawer.ts
 import { useCategoryStore } from '../store(Zustand)/useCategoryStore';
 
-export function useCategoryDrawer() {
+export function useCategorySlider() {
   const activeCategoryId = useCategoryStore((state) => state.activeCategoryId);
   const isDrawerOpen = useCategoryStore((state) => state.isDrawerOpen);
   const categories = useCategoryStore((state) => state.categories);
@@ -33,4 +32,4 @@ export function useCategoryDrawer() {
   };
 }
 
-export default useCategoryDrawer;
+export default useCategorySlider;

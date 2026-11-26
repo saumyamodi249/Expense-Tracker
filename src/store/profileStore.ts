@@ -17,9 +17,6 @@ interface ProfileStore {
 const defaultAppearance: AppearanceSettings = {
   theme: "light",
   accent: "charcoal",
-  sidebarExpanded: true,
-  animations: true,
-  reducedSpacing: false,
 };
 
 export const useProfileStore = create<ProfileStore>()(

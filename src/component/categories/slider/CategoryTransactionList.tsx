@@ -1,4 +1,3 @@
-// src/features/categories/components/drawer/CategoryTransactionList.tsx
 import React from 'react';
 import { Button } from 'antd';
 import { FiTrash2 } from 'react-icons/fi';

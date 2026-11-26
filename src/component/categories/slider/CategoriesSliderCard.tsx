@@ -1,15 +1,14 @@
-// src/features/categories/components/drawer/DrawerSummaryBanner.tsx
 import React from 'react';
 import type { Category } from '../../../types/categorytypes';
 import { useCategoryStats } from '../hooks/useCategoryCalculationAndValidator';
 import { normalizeCategoryColor } from '../constants/categoryConstants';
 import { CategoryProgressBar } from '../card/CategoryProgressBar';
 
-interface DrawerSummaryBannerProps {
+interface CategoriesSliderCardProps {
   category: Category;
 }
 
-export const DrawerSummaryBanner: React.FC<DrawerSummaryBannerProps> = ({ category }) => {
+export const CategoriesSliderCard: React.FC<CategoriesSliderCardProps> = ({ category }) => {
   const {
     progressPercent,
     formattedSpent,
@@ -70,4 +69,4 @@ export const DrawerSummaryBanner: React.FC<DrawerSummaryBannerProps> = ({ catego
   );
 };
 
-export default DrawerSummaryBanner;
+export default CategoriesSliderCard;
